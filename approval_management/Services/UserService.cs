@@ -36,5 +36,10 @@ namespace ApprovalManagementAPI.Services
         {
             return _userRepository.RegisterUser(userData);
         }
+
+        public Task<List<UserInfo>> GetRequestUserById(int id)
+        {
+            return _userRepository.GetRequestUserById(id);
+        }
     }
 }

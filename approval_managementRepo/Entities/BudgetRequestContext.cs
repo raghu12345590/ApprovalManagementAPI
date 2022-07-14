@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -19,6 +20,7 @@ namespace ApprovalManagementAPI.DataModel.Entities
 
         public virtual DbSet<RequestDetail> RequestDetails { get; set; }
         public virtual DbSet<UserInfo> UserInfos { get; set; }
+        public IEnumerable<object> RequestDetailsDTO { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -2,6 +2,8 @@
 using ApprovalManagementAPI.Services.Interfaces;
 using ApprovalManagementAPI.DataModel.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ApprovalManagementAPI.Controllers
 {
@@ -29,6 +31,12 @@ namespace ApprovalManagementAPI.Controllers
         public void SignUp([FromBody] UserInfo userData)
         {
             _userService.RegisterUser(userData);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<UserInfo>>> GetRequestUserByID(int id)
+        {
+            return await _userService.GetRequestUserById(id);
         }
     }
 }

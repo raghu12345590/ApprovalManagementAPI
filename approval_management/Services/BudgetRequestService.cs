@@ -26,6 +26,36 @@ namespace ApprovalManagementAPI.Services
             return _budgetRequest.GetRequestbyID(id);
         }
 
+        public Task<List<RequestDetail>> GetRequestByManagerId(int managerId, int requestStatus)
+        {
+            return _budgetRequest.GetRequestByManagerId(managerId, requestStatus);
+        }
+
+        public RequestDetail GetRequestbyRequestId(int id)
+        {
+            return _budgetRequest.GetRequest(id);
+        }
+
+        public Task<List<RequestDetail>> GetRequestbyResult(int userId, int requestResultId)
+        {
+            return _budgetRequest.GetRequestbyResult(userId,requestResultId);
+        }
+
+        public Task<int> updateDeleteRequest(int RequestId, bool IsDeleted)
+        {
+            return _budgetRequest.updateDeleteRequest(RequestId, IsDeleted);
+        }
+
+        public Task<int> updateRequestResult(int RequestId, int requestStatus)
+        {
+            return _budgetRequest.updateRequestResult(RequestId, requestStatus);
+        }
+
+        public Task<int> updateRejectedReasonComment(int RequestId, string comment)
+        {
+            return _budgetRequest.updateRejectedReasonComment(RequestId, comment);
+        }
+
         public int AddRequest(RequestDetail request)
         {
             return _budgetRequest.AddRequest(request);
@@ -36,16 +66,12 @@ namespace ApprovalManagementAPI.Services
             return (_budgetRequest.DeleteRequest(id));
         }
 
-        public RequestDetail UpdateRequest(RequestDetail request)
+        public async Task<int> UpdateRequest(RequestDetail requestDetail)
         {
-            return _budgetRequest.UpdateRequest(request);
+            return await _budgetRequest.UpdateRequest(requestDetail);
         }
 
-        public RequestDetail UpdateRequestById(int id,RequestDetail request)
-        {
-            return _budgetRequest.UpdateRequest(request);
-        }
-
+      
 
     }
 }

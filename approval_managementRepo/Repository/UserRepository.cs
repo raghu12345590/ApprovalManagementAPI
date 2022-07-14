@@ -1,6 +1,7 @@
 ﻿using ApprovalManagementAPI.DataModel.Entities;
 using ApprovalManagementAPI.DataModel.Repository.Interface;
 using ApprovalManagementAPI.ServiceModels.DTO.Request;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,9 @@ namespace ApprovalManagementAPI.DataModel.Repository
                     UserName = userDetails.UserName,
                     UserId = userDetails.UserId,
                     ManagerId = userDetails.ManagerId,
-                    IsManager = userDetails.IsManager
+                    IsManager = userDetails.IsManager,
+                    EmailId = userDetails.EmailId,
+                    Designation = userDetails.Designation
                 };
 
                 return user;
@@ -83,5 +86,12 @@ namespace ApprovalManagementAPI.DataModel.Repository
                 throw;
             }
         }
+
+        public async Task<List<UserInfo>> GetRequestUserById(int id)
+        {
+            return await _context.UserInfos.Where(x => x.UserId == id).ToListAsync();
+        }
+
+
     }
 }

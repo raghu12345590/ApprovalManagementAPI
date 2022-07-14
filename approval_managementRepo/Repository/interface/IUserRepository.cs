@@ -17,6 +17,9 @@ namespace ApprovalManagementAPI.DataModel.Repository.Interface
 
         bool isUserExists(int userId);
 
-    
+        Task<List<UserInfo>> GetRequestUserById(int id);
+
+
+
     }
 }

@@ -11,6 +11,8 @@ namespace ApprovalManagementAPI.Mapper
             CreateMap<UserInfo, UserInfoDto>().ReverseMap();
 
             CreateMap<UserInfo, LoginDetailsDTO>();
+
+            CreateMap<RequestDetail, RequestDetailsDTO>().ReverseMap();
         }
 
     }
